@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvWords = new System.Windows.Forms.DataGridView();
             this.Word = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Translate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolver = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWords)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -46,16 +46,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // dataGridView1
+            // dgvWords
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvWords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Word,
             this.Translate});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(243, 327);
-            this.dataGridView1.TabIndex = 2;
+            this.dgvWords.Location = new System.Drawing.Point(12, 12);
+            this.dgvWords.Name = "dgvWords";
+            this.dgvWords.Size = new System.Drawing.Size(243, 327);
+            this.dgvWords.TabIndex = 2;
             // 
             // Word
             // 
@@ -83,11 +83,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 351);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvWords);
             this.Controls.Add(this.button1);
             this.Name = "Vocabulary";
             this.Text = "Vocabulary";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Vocabulary_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWords)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -95,7 +96,7 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvWords;
         private System.Windows.Forms.DataGridViewTextBoxColumn Word;
         private System.Windows.Forms.DataGridViewTextBoxColumn Translate;
         private System.Windows.Forms.Button btnVolver;

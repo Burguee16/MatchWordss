@@ -67,6 +67,26 @@ namespace MatchWords
                 throw ex;
             }
         }
+        public bool ProbarConexion()
+        {
+            try
+            {
+                conexion.Open();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al conectar: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (conexion.State == System.Data.ConnectionState.Open)
+                {
+                    conexion.Close();
+                }
+            }
+        }
     }
 }
 

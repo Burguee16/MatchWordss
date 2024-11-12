@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MatchWords
 {
     public partial class Vocabulary : Form
@@ -27,6 +28,25 @@ namespace MatchWords
         {
             NewWord newword = new NewWord();
             newword.Show();
+        }
+
+        private void Vocabulary_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Datos datos = new Datos();
+                datos.setearConsulta("select palabra, translatee from words");
+                DataTable tabla = new DataTable();
+                dgvWords.DataSource = datos;
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
     }
 }
