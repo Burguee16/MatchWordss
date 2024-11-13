@@ -10,6 +10,6 @@ namespace MatchWords
     {
         public int Id { get; set; }
         public string palabra { get; set; }
-        public int translate { get; set; }
+        public string translate { get; set; }
     }
 }
