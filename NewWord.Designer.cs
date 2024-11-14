@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNewWord = new System.Windows.Forms.TextBox();
+            this.txtNewTranslate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNewWord
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtNewWord.Location = new System.Drawing.Point(37, 75);
+            this.txtNewWord.Name = "txtNewWord";
+            this.txtNewWord.Size = new System.Drawing.Size(176, 20);
+            this.txtNewWord.TabIndex = 0;
             // 
-            // textBox2
+            // txtNewTranslate
             // 
-            this.textBox2.Location = new System.Drawing.Point(37, 124);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtNewTranslate.Location = new System.Drawing.Point(37, 124);
+            this.txtNewTranslate.Name = "txtNewTranslate";
+            this.txtNewTranslate.Size = new System.Drawing.Size(176, 20);
+            this.txtNewTranslate.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 22);
+            this.label1.Location = new System.Drawing.Point(97, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
             this.label1.TabIndex = 2;
@@ -75,18 +77,37 @@
             this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // NewWorl
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(86, 27);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(44, 20);
+            this.txtId.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(47, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Id";
+            // 
+            // NewWord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 267);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Name = "NewWorl";
+            this.Controls.Add(this.txtNewTranslate);
+            this.Controls.Add(this.txtNewWord);
+            this.Name = "NewWord";
             this.Text = "NewWorl";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -95,10 +116,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNewWord;
+        private System.Windows.Forms.TextBox txtNewTranslate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label3;
     }
 }

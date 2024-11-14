@@ -32,8 +32,6 @@
             this.dgvWords = new System.Windows.Forms.DataGridView();
             this.btnVolver = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.palabra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.translatee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWords)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +49,7 @@
             // 
             this.dgvWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvWords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.palabra,
-            this.translatee});
+            this.Id});
             this.dgvWords.Location = new System.Drawing.Point(12, 12);
             this.dgvWords.Name = "dgvWords";
             this.dgvWords.Size = new System.Drawing.Size(343, 327);
@@ -74,16 +70,6 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.Visible = false;
-            // 
-            // palabra
-            // 
-            this.palabra.HeaderText = "Word";
-            this.palabra.Name = "palabra";
-            // 
-            // translatee
-            // 
-            this.translatee.HeaderText = "Translate";
-            this.translatee.Name = "translatee";
             // 
             // Vocabulary
             // 
@@ -107,7 +93,5 @@
         private System.Windows.Forms.DataGridView dgvWords;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn palabra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn translatee;
     }
 }
