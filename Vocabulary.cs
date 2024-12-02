@@ -21,7 +21,12 @@ namespace MatchWords
         private void btnVolver_Click(object sender, EventArgs e)
         {
             InitialScreen initialScreen = new InitialScreen();
+            
             initialScreen.Show();
+
+            
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)

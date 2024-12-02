@@ -19,7 +19,11 @@ namespace MatchWords
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            Datos datos = new Datos();
+            List<Word> listaPalabras = new List<Word>();
+
+            btnWord1.Text = listaPalabras.Count().ToString();
         }
+    } 
     }
-}
+
