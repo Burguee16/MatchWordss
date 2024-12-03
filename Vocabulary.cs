@@ -41,6 +41,7 @@ namespace MatchWords
             List<Word> listaPalabras = new List<Word>();
             listaPalabras = datos.listar();
             dgvWords.DataSource = listaPalabras;
+            
 
 
 

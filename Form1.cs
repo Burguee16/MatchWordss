@@ -21,8 +21,24 @@ namespace MatchWords
         {
             Datos datos = new Datos();
             List<Word> listaPalabras = new List<Word>();
+            listaPalabras = datos.listar();
+            btnContador.Text = listaPalabras.Count().ToString();
+            //////////////////////////////////
+            btnWord1.Text = listaPalabras.First().palabra.ToString();
+            btnTranslate1.Text = listaPalabras.First().translate.ToString();
+            btnWord2.Text = listaPalabras.ElementAt(1).palabra.ToString();
+            btnTranslate2.Text = listaPalabras.ElementAt(1).translate.ToString();
+            btnWord3.Text = listaPalabras.ElementAt(2).palabra.ToString();
+            btnTranslate3.Text = listaPalabras.ElementAt(2).translate.ToString();
+            btnWord4.Text = listaPalabras.ElementAt(3).palabra.ToString();
+            btnTranslate4.Text = listaPalabras.ElementAt(3).translate.ToString();
+            btnWord5.Text = listaPalabras.ElementAt(4).palabra.ToString();
+            btnTranslate5.Text = listaPalabras.ElementAt(4).translate.ToString();
+        }
 
-            btnWord1.Text = listaPalabras.Count().ToString();
+        private void btnWord1_Click(object sender, EventArgs e)
+        {
+
         }
     } 
     }
