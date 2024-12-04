@@ -47,6 +47,7 @@
             this.btnWord1.Name = "btnWord1";
             this.btnWord1.Size = new System.Drawing.Size(135, 55);
             this.btnWord1.TabIndex = 0;
+            this.btnWord1.Tag = "1";
             this.btnWord1.UseVisualStyleBackColor = true;
             this.btnWord1.Click += new System.EventHandler(this.btnWord1_Click);
             // 
@@ -56,6 +57,7 @@
             this.btnTranslate1.Name = "btnTranslate1";
             this.btnTranslate1.Size = new System.Drawing.Size(135, 55);
             this.btnTranslate1.TabIndex = 1;
+            this.btnTranslate1.Tag = "1";
             this.btnTranslate1.UseVisualStyleBackColor = true;
             // 
             // btnWord2
@@ -64,6 +66,7 @@
             this.btnWord2.Name = "btnWord2";
             this.btnWord2.Size = new System.Drawing.Size(135, 55);
             this.btnWord2.TabIndex = 2;
+            this.btnWord2.Tag = "2";
             this.btnWord2.UseVisualStyleBackColor = true;
             // 
             // btnTranslate2
@@ -72,6 +75,7 @@
             this.btnTranslate2.Name = "btnTranslate2";
             this.btnTranslate2.Size = new System.Drawing.Size(135, 55);
             this.btnTranslate2.TabIndex = 3;
+            this.btnTranslate2.Tag = "2";
             this.btnTranslate2.UseVisualStyleBackColor = true;
             // 
             // btnWord3

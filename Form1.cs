@@ -56,25 +56,28 @@ namespace MatchWords
 
         private void Boton_Click(object sender, EventArgs e)
         {
-            Datos datos = new Datos();
-            List<Word> listaPalabras = new List<Word>();
-            listaPalabras = datos.listar();
-            Button botonActual = sender as Button;
-
-            if(botonSeleccionado1 == null)
-            {
-
-                botonSeleccionado1 = botonActual;
-                botonActual.BackColor = Color.LightBlue;
-              
-            }
-            else if(botonSeleccionado2 == null && botonActual !=botonSeleccionado1)
-            {
-                botonSeleccionado2 = botonActual;
-                botonActual.BackColor = Color.LightBlue;
-            }
+            
+            Button botonSeleccionado2 = null;    
+            
+            Button botonSeleccionado1 = null;
             
 
+            if (botonSeleccionado1 == null)
+            {
+                Button botonActual1 = sender as Button;
+                botonActual1 = botonSeleccionado1;
+                botonActual1.BackColor = Color.LightBlue;
+              
+            }
+            if(botonSeleccionado2 == null)
+            {
+                botonSeleccionado2.BackColor = Color.LightBlue;
+            }
+            if(botonActual1.Tag == botonSeleccionado2.Tag)
+            {
+                botonActual1.BackColor = Color.Green;
+                botonSeleccionado2.BackColor = Color.Green;
+            }
         }
         
         private void btnWord1_Click(object sender, EventArgs e)
