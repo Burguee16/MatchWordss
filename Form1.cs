@@ -20,12 +20,13 @@ namespace MatchWords
         private Button botonParaOcultar1;
         private Button botonParaOcultar2;
         private Random random;
+        int indiceActual = 0;
         public Form1()
         {
             InitializeComponent();
 
             timer = new Timer();
-            timer.Interval = 1000;
+            timer.Interval = 250;
             timer.Tick += Timer_Tick;
         }
 
@@ -106,14 +107,53 @@ namespace MatchWords
         }
         private void Timer_Tick(object sender,EventArgs e)
         {
+
+            
             if(botonParaOcultar1 != null)
             {
-                botonParaOcultar1.Visible = false;
+                Size sizeBoton1 = botonParaOcultar1.Size;
+                Point posicionBoton1 = botonParaOcultar1.Location;
+                this.Controls.Remove(botonParaOcultar1);
+                if(indiceActual < listaPalabras.Count) {
+                    string nuevaPalabra1 = listaPalabras[indiceActual].palabra;
+                    indiceActual++;
+                    Button nuevoBoton1 = new Button
+                    {
+
+                        Location = posicionBoton1,
+                        Text = listaPalabras[indiceActual].palabra,
+                        Size = sizeBoton1,
+
+                    };
+                    nuevoBoton1.Click += Boton_Click;
+
+                    this.Controls.Add(nuevoBoton1);
+                }
+                else
+                {
+                    MessageBox.Show("fINISH");
+                }
 
             }
             if(botonParaOcultar2 != null)
             {
-                botonParaOcultar2.Visible = false;
+                Size SizeBoton2 = botonParaOcultar2.Size;
+                Point posicionBoton2 = botonParaOcultar2.Location;
+                this.Controls.Remove(botonParaOcultar2);
+                if(indiceActual < listaPalabras.Count) {
+                    string nuevaPalabra2 = listaPalabras[indiceActual].translate;
+                    indiceActual++;
+                    Button nuevoBoton2 = new Button
+                    {
+                        Location = posicionBoton2,
+                        Text = listaPalabras[indiceActual].translate,
+                        Size = SizeBoton2
+                    };
+                    nuevoBoton2.Click += Boton_Click;
+
+                    this.Controls.Add(nuevoBoton2);
+                }
+                
             }
 
             timer.Stop();
@@ -123,7 +163,10 @@ namespace MatchWords
             botonParaOcultar2 = null;
 
         }
-        
+        private void GenerarBoton()
+        {
+            
+        }
         private void btnWord1_Click(object sender, EventArgs e)
         {
 
