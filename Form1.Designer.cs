@@ -84,6 +84,7 @@
             this.btnWord3.Name = "btnWord3";
             this.btnWord3.Size = new System.Drawing.Size(135, 55);
             this.btnWord3.TabIndex = 4;
+            this.btnWord3.Tag = "3";
             this.btnWord3.UseVisualStyleBackColor = true;
             // 
             // btnTranslate3
@@ -92,6 +93,7 @@
             this.btnTranslate3.Name = "btnTranslate3";
             this.btnTranslate3.Size = new System.Drawing.Size(135, 55);
             this.btnTranslate3.TabIndex = 5;
+            this.btnTranslate3.Tag = "3";
             this.btnTranslate3.UseVisualStyleBackColor = true;
             // 
             // btnWord4
@@ -100,6 +102,7 @@
             this.btnWord4.Name = "btnWord4";
             this.btnWord4.Size = new System.Drawing.Size(135, 55);
             this.btnWord4.TabIndex = 6;
+            this.btnWord4.Tag = "4";
             this.btnWord4.UseVisualStyleBackColor = true;
             // 
             // btnTranslate4
@@ -108,6 +111,7 @@
             this.btnTranslate4.Name = "btnTranslate4";
             this.btnTranslate4.Size = new System.Drawing.Size(135, 55);
             this.btnTranslate4.TabIndex = 7;
+            this.btnTranslate4.Tag = "4";
             this.btnTranslate4.UseVisualStyleBackColor = true;
             // 
             // btnWord5
@@ -116,6 +120,7 @@
             this.btnWord5.Name = "btnWord5";
             this.btnWord5.Size = new System.Drawing.Size(135, 55);
             this.btnWord5.TabIndex = 8;
+            this.btnWord5.Tag = "5";
             this.btnWord5.UseVisualStyleBackColor = true;
             // 
             // btnTranslate5
@@ -124,6 +129,7 @@
             this.btnTranslate5.Name = "btnTranslate5";
             this.btnTranslate5.Size = new System.Drawing.Size(135, 55);
             this.btnTranslate5.TabIndex = 9;
+            this.btnTranslate5.Tag = "5";
             this.btnTranslate5.UseVisualStyleBackColor = true;
             // 
             // btnContador

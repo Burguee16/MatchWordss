@@ -12,17 +12,26 @@ namespace MatchWords
 {
     public partial class Form1 : Form
     {
+        Datos datos = new Datos();
+        List<Word> listaPalabras = new List<Word>();
         private Button botonSeleccionado1 = null;
         private Button botonSeleccionado2 = null;
+        private Timer timer;
+        private Button botonParaOcultar1;
+        private Button botonParaOcultar2;
+        private Random random;
         public Form1()
         {
             InitializeComponent();
+
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Datos datos = new Datos();
-            List<Word> listaPalabras = new List<Word>();
+            
             listaPalabras = datos.listar();
             btnContador.Text = listaPalabras.Count().ToString();
             ////////////////////////////////// MOSTRAR LAS PALABRAS
@@ -56,28 +65,63 @@ namespace MatchWords
 
         private void Boton_Click(object sender, EventArgs e)
         {
+            Button botonActual = sender as Button;
             
-            Button botonSeleccionado2 = null;    
-            
-            Button botonSeleccionado1 = null;
-            
-
-            if (botonSeleccionado1 == null)
+            if(botonActual == null)
             {
-                Button botonActual1 = sender as Button;
-                botonActual1 = botonSeleccionado1;
-                botonActual1.BackColor = Color.LightBlue;
-              
+                MessageBox.Show("ERROR");
+                return;
+            }
+            if(botonSeleccionado1 == null)
+            {
+                botonSeleccionado1 = botonActual;
+                botonSeleccionado1.BackColor = Color.LightBlue;
+                return;
             }
             if(botonSeleccionado2 == null)
             {
+                botonSeleccionado2 = botonActual;
                 botonSeleccionado2.BackColor = Color.LightBlue;
+
+                if(botonSeleccionado1.Tag != null && botonSeleccionado2.Tag != null &&
+                    botonSeleccionado1.Tag.ToString() ==  botonSeleccionado2.Tag.ToString())
+                {
+                    botonSeleccionado1.BackColor = Color.Green;
+                    botonSeleccionado2.BackColor = Color.Green;
+
+                    botonParaOcultar1 = botonSeleccionado1;
+                    botonParaOcultar2 = botonSeleccionado2;
+
+                    timer.Start();
+                }
+                else
+                {
+                    botonSeleccionado1.BackColor = Color.Red;
+                    botonSeleccionado2.BackColor = Color.Red;
+                }
+                botonSeleccionado1 = null;
+                botonSeleccionado2 = null;
+                return;
             }
-            if(botonActual1.Tag == botonSeleccionado2.Tag)
+        }
+        private void Timer_Tick(object sender,EventArgs e)
+        {
+            if(botonParaOcultar1 != null)
             {
-                botonActual1.BackColor = Color.Green;
-                botonSeleccionado2.BackColor = Color.Green;
+                botonParaOcultar1.Visible = false;
+
             }
+            if(botonParaOcultar2 != null)
+            {
+                botonParaOcultar2.Visible = false;
+            }
+
+            timer.Stop();
+            botonSeleccionado1 = null;
+            botonSeleccionado2 = null;
+            botonParaOcultar1 = null;
+            botonParaOcultar2 = null;
+
         }
         
         private void btnWord1_Click(object sender, EventArgs e)
