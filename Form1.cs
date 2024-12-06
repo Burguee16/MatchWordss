@@ -20,13 +20,14 @@ namespace MatchWords
         private Button botonParaOcultar1;
         private Button botonParaOcultar2;
         private Random random;
-        int indiceActual = 0;
+        int indicePalabras = 0;
+        int indiceTraducciones = 0;
         public Form1()
         {
             InitializeComponent();
 
             timer = new Timer();
-            timer.Interval = 250;
+            timer.Interval = 400;
             timer.Tick += Timer_Tick;
         }
 
@@ -111,47 +112,33 @@ namespace MatchWords
             
             if(botonParaOcultar1 != null)
             {
-                Size sizeBoton1 = botonParaOcultar1.Size;
-                Point posicionBoton1 = botonParaOcultar1.Location;
-                this.Controls.Remove(botonParaOcultar1);
-                if(indiceActual < listaPalabras.Count) {
-                    string nuevaPalabra1 = listaPalabras[indiceActual].palabra;
-                    indiceActual++;
-                    Button nuevoBoton1 = new Button
-                    {
-
-                        Location = posicionBoton1,
-                        Text = listaPalabras[indiceActual].palabra,
-                        Size = sizeBoton1,
-
-                    };
-                    nuevoBoton1.Click += Boton_Click;
-
-                    this.Controls.Add(nuevoBoton1);
-                }
-                else
+                
+                try
                 {
-                    MessageBox.Show("fINISH");
+                    GenerarPalabra(botonParaOcultar1,listaPalabras,ref indicePalabras);
+                    
                 }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                timer.Stop();
+                
 
             }
             if(botonParaOcultar2 != null)
             {
-                Size SizeBoton2 = botonParaOcultar2.Size;
-                Point posicionBoton2 = botonParaOcultar2.Location;
-                this.Controls.Remove(botonParaOcultar2);
-                if(indiceActual < listaPalabras.Count) {
-                    string nuevaPalabra2 = listaPalabras[indiceActual].translate;
-                    indiceActual++;
-                    Button nuevoBoton2 = new Button
-                    {
-                        Location = posicionBoton2,
-                        Text = listaPalabras[indiceActual].translate,
-                        Size = SizeBoton2
-                    };
-                    nuevoBoton2.Click += Boton_Click;
+                
+                try
+                {
+                    GenerarTraduccion(botonParaOcultar2, listaPalabras, ref indiceTraducciones);
+                }
+                catch (Exception ex)
+                {
 
-                    this.Controls.Add(nuevoBoton2);
+                    throw ex;
+
                 }
                 
             }
@@ -163,9 +150,59 @@ namespace MatchWords
             botonParaOcultar2 = null;
 
         }
-        private void GenerarBoton()
+        private void GenerarPalabra(Button botonParaOcultar,List<Word> listaPalabras, ref int indicePalabras)
         {
-            
+            if(indicePalabras >= listaPalabras.Count)
+            {
+                MessageBox.Show("No hay mas palabras");
+                return;
+            }
+
+            Size sizeBoton = botonParaOcultar.Size;
+            Point positionBoton = botonParaOcultar.Location;
+
+            this.Controls.Remove(botonParaOcultar);
+
+            string nuevaPalabra = listaPalabras[indicePalabras].palabra;
+            Button nuevoBoton = new Button
+            {
+                Location = positionBoton,
+                Size = sizeBoton,
+                Tag = listaPalabras[indicePalabras],
+                Text = nuevaPalabra
+            };
+            nuevoBoton.Click += Boton_Click;
+
+            this.Controls.Add(nuevoBoton);
+            indicePalabras++;
+
+        }
+        private void GenerarTraduccion(Button botonParaOcultar, List<Word> listaPalabras, ref int indiceTraducciones)
+        {
+            if (indiceTraducciones >= listaPalabras.Count)
+            {
+                MessageBox.Show("No hay mas palabras");
+                return;
+            }
+
+            Size sizeBoton = botonParaOcultar.Size;
+            Point positionBoton = botonParaOcultar.Location;
+
+            this.Controls.Remove(botonParaOcultar);
+
+            string nuevaPalabra = listaPalabras[indiceTraducciones].translate;
+            Button nuevoBoton = new Button
+            {
+                Location = positionBoton,
+                Size = sizeBoton,
+                Tag = listaPalabras[indiceTraducciones],
+                Text = nuevaPalabra
+            };
+            nuevoBoton.Click += Boton_Click;
+
+            this.Controls.Add(nuevoBoton);
+            indiceTraducciones++;
+
         }
         private void btnWord1_Click(object sender, EventArgs e)
         {
