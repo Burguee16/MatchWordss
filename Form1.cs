@@ -14,6 +14,7 @@ namespace MatchWords
     {
         Datos datos = new Datos();
         List<Word> listaPalabras = new List<Word>();
+        
         private Button botonSeleccionado1 = null;
         private Button botonSeleccionado2 = null;
         private Timer timer;
@@ -33,6 +34,7 @@ namespace MatchWords
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            GenerarBotonesAleatorios(listaPalabras, palabra);
             
             listaPalabras = datos.listar();
             btnContador.Text = listaPalabras.Count().ToString();
@@ -152,6 +154,7 @@ namespace MatchWords
         }
         private void GenerarPalabra(Button botonParaOcultar,List<Word> listaPalabras, ref int indicePalabras)
         {
+            
             if(indicePalabras >= listaPalabras.Count)
             {
                 MessageBox.Show("No hay mas palabras");
@@ -203,6 +206,46 @@ namespace MatchWords
             this.Controls.Add(nuevoBoton);
             indiceTraducciones++;
 
+        }
+        private void GenerarBotonesAleatorios(List<string> palabras)
+        {
+            List<Point> posicionesPalabras = new List<Point>
+            {
+                new Point (48,27),
+                new Point (48,99),
+                new Point (48,178),
+                new Point (48,262),
+                new Point (48,343),
+            };
+
+            List<Point> posicionesTraducciones = new List<Point>
+            {
+                new Point (294,27),
+                new Point (294,99),
+                new Point (294,178),
+                new Point (294,262),
+                new Point (294,343),
+            };
+
+            string nuevaPalabra = listaPalabras[indicePalabras].palabra;
+
+            foreach(var palabra in palabras)
+            {
+                if (posicionesPalabras.Count == 0) break;
+
+                int indice = random.Next(posicionesPalabras.Count);
+                Point posicion = posicionesPalabras[indice];
+                posicionesPalabras.RemoveAt(indice);
+
+                Button botonPalabra = new Button
+                {
+                    Text = nuevaPalabra,
+                    Size = new Size(135,55),
+                    Location = posicion
+                };
+                botonPalabra.Click += Boton_Click;
+                this.Controls.Add(botonPalabra);
+            }
         }
         private void btnWord1_Click(object sender, EventArgs e)
         {

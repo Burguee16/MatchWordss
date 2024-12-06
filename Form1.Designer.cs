@@ -43,7 +43,7 @@
             // 
             // btnWord1
             // 
-            this.btnWord1.Location = new System.Drawing.Point(48, 27);
+            this.btnWord1.Location = new System.Drawing.Point(435, 27);
             this.btnWord1.Name = "btnWord1";
             this.btnWord1.Size = new System.Drawing.Size(135, 55);
             this.btnWord1.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             // btnWord2
             // 
-            this.btnWord2.Location = new System.Drawing.Point(48, 99);
+            this.btnWord2.Location = new System.Drawing.Point(435, 99);
             this.btnWord2.Name = "btnWord2";
             this.btnWord2.Size = new System.Drawing.Size(135, 55);
             this.btnWord2.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             // btnWord3
             // 
-            this.btnWord3.Location = new System.Drawing.Point(48, 178);
+            this.btnWord3.Location = new System.Drawing.Point(435, 178);
             this.btnWord3.Name = "btnWord3";
             this.btnWord3.Size = new System.Drawing.Size(135, 55);
             this.btnWord3.TabIndex = 4;
@@ -98,7 +98,7 @@
             // 
             // btnWord4
             // 
-            this.btnWord4.Location = new System.Drawing.Point(48, 262);
+            this.btnWord4.Location = new System.Drawing.Point(435, 262);
             this.btnWord4.Name = "btnWord4";
             this.btnWord4.Size = new System.Drawing.Size(135, 55);
             this.btnWord4.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             // btnWord5
             // 
-            this.btnWord5.Location = new System.Drawing.Point(48, 343);
+            this.btnWord5.Location = new System.Drawing.Point(435, 343);
             this.btnWord5.Name = "btnWord5";
             this.btnWord5.Size = new System.Drawing.Size(135, 55);
             this.btnWord5.TabIndex = 8;
