@@ -34,7 +34,9 @@ namespace MatchWords
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GenerarBotonesAleatorios(listaPalabras, palabra);
+            //NO APARECEN LOS BOTONES, listaPalabras esta vacia, hay que ver por que y llenarla
+            GenerarBotonesAleatorios();
+            GenerarBotonesPrueba();
             
             listaPalabras = datos.listar();
             btnContador.Text = listaPalabras.Count().ToString();
@@ -207,7 +209,7 @@ namespace MatchWords
             indiceTraducciones++;
 
         }
-        private void GenerarBotonesAleatorios(List<string> palabras)
+        private void GenerarBotonesAleatorios()
         {
             List<Point> posicionesPalabras = new List<Point>
             {
@@ -227,9 +229,13 @@ namespace MatchWords
                 new Point (294,343),
             };
 
-            string nuevaPalabra = listaPalabras[indicePalabras].palabra;
-
-            foreach(var palabra in palabras)
+            //string nuevaPalabra = listaPalabras[indicePalabras].palabra;
+            if (listaPalabras == null || listaPalabras.Count == 0)
+            {
+                MessageBox.Show("La lista de palabras está vacía o no se ha inicializado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            foreach (var palabra in listaPalabras)
             {
                 if (posicionesPalabras.Count == 0) break;
 
@@ -239,13 +245,23 @@ namespace MatchWords
 
                 Button botonPalabra = new Button
                 {
-                    Text = nuevaPalabra,
+                    Text = listaPalabras[indice].palabra,
                     Size = new Size(135,55),
                     Location = posicion
                 };
                 botonPalabra.Click += Boton_Click;
                 this.Controls.Add(botonPalabra);
             }
+        }
+        private void GenerarBotonesPrueba()
+        {
+            Button testButton = new Button
+            {
+                Text = "Prueba",
+                Size = new Size(135, 55),
+                Location = new Point(50, 50) // Posición fija de prueba
+            };
+            this.Controls.Add(testButton);
         }
         private void btnWord1_Click(object sender, EventArgs e)
         {
