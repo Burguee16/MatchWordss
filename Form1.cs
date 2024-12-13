@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,9 @@ namespace MatchWords
             {
                 GenerarBotonesAleatorios(listaPalabras, out botonPalabra);
                 GenerarTraduccion(listaPalabras, out botonTranslate);
-                if(botonSeleccionado2 != null) { CompararBotones(botonPalabra, botonTranslate); }
+                
+                
+                if (botonSeleccionado2 != null) { CompararBotones(botonPalabra, botonTranslate); }
                 
 
 
@@ -89,11 +92,13 @@ namespace MatchWords
         {
             
 
-            if (botonSeleccionado1.Tag == botonSeleccionado2.Tag)
+            if(botonPalabra.Name == botonTraduccion.Name)
             {
-                MessageBox.Show("Coinciden");
+                botonPalabra.BackColor = Color.Green;
+                botonTraduccion.BackColor = Color.Green;
                 return;
             }
+ 
             else
             {
                 MessageBox.Show("No ");
@@ -103,10 +108,12 @@ namespace MatchWords
         }
         private void Boton_Click(object sender, EventArgs e)
         {
-            Button boton = new Button();
+            Button boton = sender as Button;
 
             if(boton != null) {
-                if(botonSeleccionado1 == null)
+                Debug.WriteLine($"Se hizo clic en el botón: {boton.Name}");
+                Debug.WriteLine($"Texto del botón clicado: {boton.Text}");
+                if (botonSeleccionado1 == null)
                 {
                     botonSeleccionado1 = boton;
                     boton.BackColor = Color.LightBlue;
@@ -116,8 +123,9 @@ namespace MatchWords
                     botonSeleccionado2 = boton;
                     boton.BackColor = Color.LightBlue;
 
-                    CompararBotones(botonPalabra, botonTranslate);
-                    return;
+                    CompararBotones(botonSeleccionado1, botonSeleccionado2);
+                    botonSeleccionado1 = null;
+                    botonSeleccionado2 = null;
                 }
             }
             
@@ -172,6 +180,7 @@ namespace MatchWords
         {
             botonTranslate = null;
             translates = datos.listar();
+            
             List<Point> posicionesTranslates = new List<Point>
             {
                 new Point (294,27),
@@ -205,11 +214,12 @@ namespace MatchWords
                     Text = translates[indice].translate,
                     Size = new Size(135, 55),
                     Location = posicion,
-                    Tag = translates[indice].Id,
-                    
-                };
+                    Name = translates[indice].Id.ToString()
+
+                 };
                 botonTranslate.Click += Boton_Click;
-                botonTranslate.Tag = (int)botonTranslate.Tag +1;
+                
+
                 this.Controls.Add(botonTranslate);
             }
         }
@@ -217,6 +227,7 @@ namespace MatchWords
         {
             botonPalabra = null;
             palabras = datos.listar();
+            
             List<Point> posicionesPalabras = new List<Point>
             {
                 new Point (48,27),
@@ -229,7 +240,7 @@ namespace MatchWords
             //string nuevaPalabra = listaPalabras[indicePalabras].palabra;
             if (palabras == null || palabras.Count == 0)
             {
-                MessageBox.Show("La lista de palabras está vacía o no se ha inicializado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 return;
             }
             List<int> indicesUsados = new List<int>();
@@ -244,19 +255,21 @@ namespace MatchWords
                     indice = random.Next(palabras.Count);
                 } while (indicesUsados.Contains(indice));
                 indicesUsados.Add(indice);
-                
-                
 
-                 botonPalabra = new Button
+
+
+                botonPalabra = new Button
                 {
                     Text = palabras[indice].palabra,
-                    Size = new Size(135,55),
+                    Size = new Size(135, 55),
                     Location = posicion,
-                    Tag = palabras[indice].Id,
+                    Name = palabras[indice].Id.ToString(),
+                    
                 };
-                botonPalabra.Tag = (int)botonPalabra.Tag +1;
-                botonPalabra.Click += Boton_Click;
                 
+                botonPalabra.Click += Boton_Click;
+                Debug.WriteLine($"Se asignó evento a botón con texto: {botonPalabra.Text} y nombre: {botonPalabra.Name}");
+
                 this.Controls.Add(botonPalabra);
             }
         }
