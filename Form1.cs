@@ -27,13 +27,17 @@ namespace MatchWords
         int indiceTraducciones = 0;
         Button botonPalabra = new Button();
         Button botonTranslate = new Button();
+        Button nuevaPalabra;
+        Button nuevaDescripcion;
+        List<int> palabrasQueSalieron = new List<int>();
+        List<int> traduccionesQueSalieron = new List<int>();
         public Form1()
         {
             InitializeComponent();
 
-            //timer = new Timer();
-            //timer.Interval = 400;
-            //timer.Tick += Timer_Tick;
+            timer = new Timer();
+            timer.Interval = 9000;
+            timer.Tick += Timer_Tick;
         }
 
         public void Form1_Load(object sender, EventArgs e)
@@ -46,8 +50,10 @@ namespace MatchWords
             {
                 GenerarBotonesAleatorios(listaPalabras, out botonPalabra);
                 GenerarTraduccion(listaPalabras, out botonTranslate);
-                
-                
+                MessageBox.Show(palabrasQueSalieron.ToString());
+                MessageBox.Show(traduccionesQueSalieron.ToString());
+
+
                 if (botonSeleccionado2 != null) { CompararBotones(botonPalabra, botonTranslate); }
                 
 
@@ -94,14 +100,26 @@ namespace MatchWords
 
             if(botonPalabra.Name == botonTraduccion.Name)
             {
-                botonPalabra.BackColor = Color.Green;
-                botonTraduccion.BackColor = Color.Green;
+                botonParaOcultar1 = botonPalabra;
+                botonParaOcultar2 = botonTraduccion;
+                
+                timer.Start();
+
+                Controls.Remove(botonParaOcultar1);
+                Controls.Remove(botonParaOcultar2);
+                
+                timer.Stop();
                 return;
             }
  
             else
             {
-                MessageBox.Show("No ");
+                
+                timer.Start();
+                botonPalabra.BackColor = Color.Empty;
+                botonTraduccion.BackColor = Color.Empty;
+                timer.Stop();
+
                 return;
             }
             
@@ -202,8 +220,9 @@ namespace MatchWords
                 int indice;
                 do
                 {
+                    
                     indice= random.Next(translates.Count);
-
+                    traduccionesQueSalieron.Add(indice);
                 } while (indicesUsados.Contains(indice));
                 indicesUsados.Add(indice);
                 
@@ -253,6 +272,7 @@ namespace MatchWords
                 do
                 {
                     indice = random.Next(palabras.Count);
+                    palabrasQueSalieron.Add(indice);
                 } while (indicesUsados.Contains(indice));
                 indicesUsados.Add(indice);
 
@@ -273,7 +293,13 @@ namespace MatchWords
                 this.Controls.Add(botonPalabra);
             }
         }
-        
+        private void BotonNuevaPalabra()
+        {
+            if(botonParaOcultar2 != null)
+            {
+
+            }
+        }
         private void btnWord1_Click(object sender, EventArgs e)
         {
 
